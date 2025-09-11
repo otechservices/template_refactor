@@ -1,0 +1,190 @@
+<div class="min-h-screen bg-gray-50">
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Documentation</h1>
+        <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+          Accédez à tous les documents officiels et formulaires de la commune
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Numériques -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Services Numériques
+      </h2>
+      <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+        Profitez de nos outils numériques pour simplifier vos démarches
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div *ngFor="let service of servicesNumeriques" class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+        <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="{{ service.icon }} text-2xl text-white"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">
+          {{ service.nom }}
+        </h3>
+        <p class="text-gray-600">
+          {{ service.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filtres -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+    <div class="flex flex-wrap gap-4 justify-center">
+      <button
+        *ngFor="let category of categories"
+        (click)="selectCategory(category)"
+        class="px-6 py-3 rounded-full font-medium transition-all duration-200 whitespace-nowrap cursor-pointer"
+        [ngClass]="{
+          'bg-blue-600 text-white shadow-lg': selectedCategory === category,
+          'bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 shadow-md': selectedCategory !== category
+        }"
+      >
+        {{ category }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Documents Grid -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div *ngFor="let document of filteredDocuments" class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center" [ngClass]="getCategoryClass(document.category)">
+              <i class="{{ document.icon }} text-xl" [ngClass]="getCategoryClass(document.category)"></i>
+            </div>
+            <span class="text-xs px-2 py-1 rounded-full" [ngClass]="getCategoryClass(document.category)">
+              {{ document.category }}
+            </span>
+          </div>
+
+          <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+            {{ document.titre }}
+          </h3>
+
+          <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+            {{ document.description }}
+          </p>
+
+          <div class="space-y-2 mb-4">
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-gray-500">Format :</span>
+              <span class="font-medium text-gray-700">{{ document.format }}</span>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-gray-500">Taille :</span>
+              <span class="font-medium text-gray-700">{{ document.taille }}</span>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-gray-500">Ajouté le :</span>
+              <span class="font-medium text-gray-700">{{ document.dateAjout }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center text-sm text-gray-500">
+              <i class="ri-download-line mr-1"></i>
+              {{ document.telechargements }} téléchargements
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition-colors cursor-pointer whitespace-nowrap flex items-center justify-center">
+              <i class="ri-download-line mr-2"></i>
+              Télécharger
+            </button>
+            <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-3 rounded-lg transition-colors cursor-pointer">
+              <i class="ri-eye-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Informations Légales -->
+  <div class="bg-blue-900 text-white py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Informations Légales
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-blue-800 rounded-xl p-6">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+              <i class="ri-shield-check-line mr-3"></i>
+              Authenticité
+            </h3>
+            <div class="space-y-3">
+              <p class="flex items-start">
+                <i class="ri-checkbox-circle-line mr-3 text-blue-300 mt-1"></i>
+                Tous les documents sont certifiés conformes
+              </p>
+              <p class="flex items-start">
+                <i class="ri-checkbox-circle-line mr-3 text-blue-300 mt-1"></i>
+                Signature électronique sécurisée
+              </p>
+              <p class="flex items-start">
+                <i class="ri-checkbox-circle-line mr-3 text-blue-300 mt-1"></i>
+                Traçabilité complète des téléchargements
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-blue-800 rounded-xl p-6">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+              <i class="ri-information-line mr-3"></i>
+              Aide
+            </h3>
+            <div class="space-y-3">
+              <p class="flex items-start">
+                <i class="ri-question-line mr-3 text-blue-300 mt-1"></i>
+                Besoin d'aide pour un document ?
+              </p>
+              <p class="flex items-start">
+                <i class="ri-phone-line mr-3 text-blue-300 mt-1"></i>
+                Contactez-nous au +229 XX XX XX XX
+              </p>
+              <p class="flex items-start">
+                <i class="ri-mail-line mr-3 text-blue-300 mt-1"></i>
+                documentation@dangbo.bj
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <div class="bg-blue-800 rounded-xl p-8">
+            <h3 class="text-2xl font-bold mb-4">Abonnement aux Notifications</h3>
+            <p class="text-blue-100 mb-6">
+              Recevez automatiquement les nouveaux documents et mises à jour par email.
+            </p>
+            <div class="flex max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Votre adresse email"
+                class="flex-1 px-4 py-3 rounded-l-lg text-gray-900 focus:outline-none"
+              />
+              <button class="bg-white text-blue-900 px-6 py-3 rounded-r-lg font-medium hover:bg-blue-50 transition-colors cursor-pointer whitespace-nowrap">
+                S'abonner
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<header class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo Section -->
+      <div class="flex items-center space-x-4">
+        <img
+          src="https://mairiedangbo.exploitsweb.com/assets/logo.png"
+          alt="Logo Mairie Dangbo"
+          class="h-14 w-14 object-contain"
+        />
+        <div class="flex flex-col">
+          <h1 class="text-2xl font-bold text-blue-900" style="font-family: 'Pacifico', serif;">
+            Mairie
+          </h1>
+          <span class="text-lg font-semibold text-blue-700 uppercase tracking-wide">
+            Dangbo
+          </span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center space-x-8">
+        <a
+          *ngFor="let item of navItems"
+          [routerLink]="item.href"
+          routerLinkActive="text-blue-600"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 whitespace-nowrap cursor-pointer"
+        >
+          {{ item.name }}
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="lg:hidden flex flex-col space-y-1 p-2 cursor-pointer"
+        (click)="toggleMobileMenu()"
+      >
+        <span class="w-6 h-0.5 bg-gray-600 transition-all duration-300" [ngClass]="{'rotate-45 translate-y-1.5': isMobileMenuOpen}"></span>
+        <span class="w-6 h-0.5 bg-gray-600 transition-all duration-300" [ngClass]="{'opacity-0': isMobileMenuOpen}"></span>
+        <span class="w-6 h-0.5 bg-gray-600 transition-all duration-300" [ngClass]="{'-rotate-45 -translate-y-1.5': isMobileMenuOpen}"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div *ngIf="isMobileMenuOpen" class="lg:hidden bg-white border-t border-gray-200 py-4">
+      <nav class="flex flex-col space-y-4">
+        <a
+          *ngFor="let item of navItems"
+          [routerLink]="item.href"
+          routerLinkActive="text-blue-600"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="text-gray-700 hover:text-blue-600 font-medium px-4 py-2 transition-colors duration-200 cursor-pointer"
+          (click)="closeMobileMenu()"
+        >
+          {{ item.name }}
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>

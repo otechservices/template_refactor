@@ -1,0 +1,56 @@
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">
+        Actualités par Catégorie
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Retrouvez toutes les informations importantes classées par thématique
+      </p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button
+        *ngFor="let category of categories"
+        (click)="setActiveCategory(category.id)"
+        class="flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-200 whitespace-nowrap cursor-pointer"
+        [ngClass]="{
+          'bg-blue-600 text-white shadow-lg': activeCategory === category.id,
+          'bg-gray-100 text-gray-700 hover:bg-gray-200': activeCategory !== category.id
+        }"
+      >
+        <i class="{{ category.icon }} text-lg"></i>
+        <span>{{ category.name }}</span>
+        <span
+          class="px-2 py-1 rounded-full text-xs font-bold"
+          [ngClass]="{
+            'bg-white/20 text-white': activeCategory === category.id,
+            'bg-gray-200 text-gray-600': activeCategory !== category.id
+          }"
+        >
+          {{ category.count }}
+        </span>
+      </button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="bg-gray-50 rounded-2xl p-12 text-center">
+      <div class="max-w-md mx-auto">
+        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <i class="ri-newspaper-line text-3xl text-blue-600"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+          Actualités en cours de mise à jour
+        </h3>
+        <p class="text-gray-600 mb-8">
+          Nos équipes travaillent activement pour publier les dernières actualités de la commune.
+          Revenez bientôt pour découvrir toutes les nouvelles informations.
+        </p>
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 whitespace-nowrap cursor-pointer">
+          Être notifié des mises à jour
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

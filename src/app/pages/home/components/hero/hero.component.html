@@ -1,0 +1,61 @@
+<section class="relative h-[600px] overflow-hidden">
+  <div *ngFor="let slide of slides; let i = index">
+    <div
+      class="absolute inset-0 transition-opacity duration-1000"
+      [ngClass]="{ 'opacity-100': i === currentSlide, 'opacity-0': i !== currentSlide }"
+      [ngStyle]="{
+        'background-image': 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' + slide.image + ')',
+        'background-size': 'cover',
+        'background-position': 'center'
+      }"
+    >
+      <div class="absolute inset-0 flex items-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
+              {{ slide.title }}
+            </h1>
+            <h2 class="text-2xl md:text-3xl text-blue-200 mb-6 font-light">
+              {{ slide.subtitle }}
+            </h2>
+            <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+              {{ slide.description }}
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 whitespace-nowrap cursor-pointer">
+                Découvrir nos services
+              </button>
+              <button class="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-lg font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer">
+                Nous contacter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button
+    (click)="prevSlide()"
+    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200 cursor-pointer"
+  >
+    <i class="ri-arrow-left-line text-2xl"></i>
+  </button>
+  <button
+    (click)="nextSlide()"
+    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200 cursor-pointer"
+  >
+    <i class="ri-arrow-right-line text-2xl"></i>
+  </button>
+
+  <!-- Dots Indicator -->
+  <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+    <button
+      *ngFor="let slide of slides; let i = index"
+      (click)="goToSlide(i)"
+      class="w-3 h-3 rounded-full transition-all duration-200 cursor-pointer"
+      [ngClass]="{ 'bg-white scale-125': i === currentSlide, 'bg-white/50': i !== currentSlide }"
+    ></button>
+  </div>
+</section>

@@ -1,0 +1,207 @@
+<!-- Hero Section -->
+<div class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Municipalité</h1>
+      <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+        Au service des citoyens de Dangbo depuis 2020
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Le Maire -->
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Le Maire
+      </h2>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div class="md:flex">
+        <div class="md:w-1/3">
+          <img [src]="maire.photo" [alt]="maire.nom" class="w-full h-64 md:h-full object-cover object-top">
+        </div>
+        <div class="md:w-2/3 p-8">
+          <div class="mb-6">
+            <h3 class="text-3xl font-bold text-gray-900 mb-2">{{ maire.nom }}</h3>
+            <p class="text-xl text-blue-600 font-semibold mb-4">{{ maire.fonction }}</p>
+            <div class="flex items-center text-gray-600 mb-6">
+              <i class="ri-calendar-line mr-3"></i>
+              <span>Mandat : {{ maire.mandatDebut }} - {{ maire.mandatFin }}</span>
+            </div>
+          </div>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            {{ maire.biographie }}
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <div class="flex items-center bg-blue-50 px-4 py-2 rounded-lg">
+              <i class="ri-phone-line text-blue-600 mr-2"></i>
+              <span class="text-gray-700">+229 XX XX XX XX</span>
+            </div>
+            <div class="flex items-center bg-blue-50 px-4 py-2 rounded-lg">
+              <i class="ri-mail-line text-blue-600 mr-2"></i>
+              <span class="text-gray-700">maire@dangbo.bj</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Conseil Municipal -->
+<div class="bg-gray-50 py-16">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Conseil Municipal
+      </h2>
+      <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+        Une équipe engagée pour le développement de Dangbo
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let conseiller of conseillers" class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <img [src]="conseiller.photo" [alt]="conseiller.nom" class="w-full h-48 object-cover object-top">
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            {{ conseiller.nom }}
+          </h3>
+          <p class="text-blue-600 font-semibold mb-3">
+            {{ conseiller.poste }}
+          </p>
+          <p class="text-gray-600">
+            {{ conseiller.responsabilites }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Services Municipaux -->
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      Services Municipaux
+    </h2>
+    <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+      Organisation administrative au service des citoyens
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div *ngFor="let service of services" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+      <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
+          <i class="{{ service.icon }} text-white text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-gray-900">{{ service.nom }}</h3>
+          <p class="text-gray-600 text-sm">{{ service.responsable }}</p>
+        </div>
+      </div>
+      <p class="text-gray-700">
+        {{ service.description }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Réalisations -->
+<div class="bg-blue-900 text-white py-16">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Principales Réalisations
+      </h2>
+      <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+        Les projets qui transforment notre commune
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <div *ngFor="let periode of realisations" class="mb-12 last:mb-0">
+        <div class="flex items-center mb-6">
+          <div class="w-16 h-16 bg-blue-700 rounded-full flex items-center justify-center mr-6">
+            <span class="text-2xl font-bold">{{ periode.annee }}</span>
+          </div>
+          <div class="flex-1 h-px bg-blue-700"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 ml-22">
+          <div *ngFor="let projet of periode.projets" class="bg-blue-800 rounded-lg p-6">
+            <div class="flex items-start">
+              <i class="ri-checkbox-circle-line text-green-400 text-xl mr-3 mt-1"></i>
+              <p class="text-blue-100">{{ projet }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Mairie -->
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Horaires et Contact
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-blue-50 rounded-xl p-8">
+        <h3 class="text-2xl font-bold text-blue-900 mb-6 flex items-center">
+          <i class="ri-time-line mr-3"></i>
+          Horaires d'ouverture
+        </h3>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center py-2 border-b border-blue-200">
+            <span class="font-medium text-gray-700">Lundi - Vendredi</span>
+            <span class="text-blue-600">7h30 - 17h00</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-blue-200">
+            <span class="font-medium text-gray-700">Samedi</span>
+            <span class="text-blue-600">8h00 - 12h00</span>
+          </div>
+          <div class="flex justify-between items-center py-2">
+            <span class="font-medium text-gray-700">Dimanche</span>
+            <span class="text-red-600">Fermé</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-green-50 rounded-xl p-8">
+        <h3 class="text-2xl font-bold text-green-900 mb-6 flex items-center">
+          <i class="ri-customer-service-line mr-3"></i>
+          Audience du Maire
+        </h3>
+        <div class="space-y-4">
+          <div class="flex items-center py-2">
+            <i class="ri-calendar-line text-green-600 mr-3"></i>
+            <div>
+              <p class="font-medium text-gray-700">Mercredi & Vendredi</p>
+              <p class="text-sm text-gray-600">Sur rendez-vous uniquement</p>
+            </div>
+          </div>
+          <div class="flex items-center py-2">
+            <i class="ri-time-line text-green-600 mr-3"></i>
+            <div>
+              <p class="font-medium text-gray-700">9h00 - 12h00</p>
+              <p class="text-sm text-gray-600">14h00 - 16h00</p>
+            </div>
+          </div>
+          <div class="flex items-center py-2">
+            <i class="ri-phone-line text-green-600 mr-3"></i>
+            <p class="text-gray-700">+229 XX XX XX XX</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

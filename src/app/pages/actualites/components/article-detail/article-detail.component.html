@@ -1,0 +1,216 @@
+<div *ngIf="article" class="min-h-screen bg-gray-50">
+  <!-- Header -->
+  <div class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <button (click)="onBack()" class="flex items-center text-blue-600 hover:text-blue-700 mb-4 cursor-pointer">
+        <i class="ri-arrow-left-line mr-2"></i>
+        Retour aux actualités
+      </button>
+
+      <div class="flex items-center space-x-4 mb-4">
+        <span class="px-3 py-1 rounded-full text-sm font-medium" [ngClass]="getCategoryColor(article.category)">
+          {{ article.category }}
+        </span>
+        <span class="text-gray-500 flex items-center">
+          <i class="ri-calendar-line mr-2"></i>
+          {{ article.date }}
+        </span>
+        <span class="text-gray-500 flex items-center">
+          <i class="ri-time-line mr-2"></i>
+          {{ article.readTime }}
+        </span>
+      </div>
+
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900">
+        {{ article.title }}
+      </h1>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <!-- Main Content -->
+      <div class="lg:col-span-3">
+        <!-- Featured Image -->
+        <div class="mb-8">
+          <img [src]="article.image" [alt]="article.title" class="w-full h-64 md:h-96 object-cover object-top rounded-xl shadow-lg">
+        </div>
+
+        <!-- Article Content -->
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="prose max-w-none">
+            <div class="text-xl text-gray-600 mb-8 font-medium leading-relaxed">
+              {{ article.excerpt }}
+            </div>
+
+            <div class="text-gray-700 leading-relaxed space-y-6">
+              <p>
+                La commune de Dangbo franchit une étape majeure dans l'amélioration de l'accès à l'eau potable pour tous ses habitants. Ce projet ambitieux, d'un montant de 2,5 milliards de FCFA, vise à équiper l'ensemble du territoire communal d'un système d'adduction d'eau moderne et durable.
+              </p>
+
+              <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Objectifs du projet</h3>
+              <p>
+                Ce projet s'inscrit dans la vision de développement durable de la commune et répond à plusieurs objectifs stratégiques :
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-600 mr-3 mt-1"></i>
+                  Garantir l'accès à l'eau potable pour 100% de la population
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-600 mr-3 mt-1"></i>
+                  Réduire les maladies hydriques de 80%
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-600 mr-3 mt-1"></i>
+                  Améliorer les conditions de vie des femmes et des enfants
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-600 mr-3 mt-1"></i>
+                  Favoriser le développement économique local
+                </li>
+              </ul>
+
+              <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Phases de réalisation</h3>
+              <p>
+                Le projet sera réalisé en trois phases distinctes sur une période de 24 mois :
+              </p>
+
+              <div class="bg-blue-50 rounded-lg p-6 my-6">
+                <h4 class="font-bold text-blue-900 mb-3">Phase 1 : Études et préparation (6 mois)</h4>
+                <p class="text-blue-800">
+                  Études techniques approfondies, consultation des communautés, et préparation du terrain.
+                </p>
+              </div>
+
+              <div class="bg-green-50 rounded-lg p-6 my-6">
+                <h4 class="font-bold text-green-900 mb-3">Phase 2 : Construction (15 mois)</h4>
+                <p class="text-green-800">
+                  Installation des infrastructures principales, construction des stations de pompage et pose des canalisations.
+                </p>
+              </div>
+
+              <div class="bg-purple-50 rounded-lg p-6 my-6">
+                <h4 class="font-bold text-purple-900 mb-3">Phase 3 : Tests et mise en service (3 mois)</h4>
+                <p class="text-purple-800">
+                  Tests de qualité, formation des équipes techniques et mise en service progressive.
+                </p>
+              </div>
+
+              <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Impact attendu</h3>
+              <p>
+                Ce projet transformera fondamentalement la vie quotidienne des habitants de Dangbo. L'accès permanent à l'eau potable permettra :
+              </p>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                <li class="bg-gray-50 rounded-lg p-4">
+                  <i class="ri-heart-line text-red-600 mr-3"></i>
+                  <span class="font-medium">Amélioration de la santé publique</span>
+                </li>
+                <li class="bg-gray-50 rounded-lg p-4">
+                  <i class="ri-time-line text-blue-600 mr-3"></i>
+                  <span class="font-medium">Gain de temps pour les familles</span>
+                </li>
+                <li class="bg-gray-50 rounded-lg p-4">
+                  <i class="ri-graduation-cap-line text-green-600 mr-3"></i>
+                  <span class="font-medium">Amélioration de la scolarisation</span>
+                </li>
+                <li class="bg-gray-50 rounded-lg p-4">
+                  <i class="ri-plant-line text-purple-600 mr-3"></i>
+                  <span class="font-medium">Développement agricole</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Gallery -->
+          <div *ngIf="article.gallery && article.gallery.length > 0" class="mt-12">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Galerie photos</h3>
+            <div class="relative mb-6">
+              <img [src]="article.gallery[currentImageIndex]" [alt]="'Image ' + (currentImageIndex + 1)" class="w-full h-64 object-cover object-top rounded-lg">
+              <ng-container *ngIf="article.gallery.length > 1">
+                <button (click)="prevImage()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors cursor-pointer">
+                  <i class="ri-arrow-left-line"></i>
+                </button>
+                <button (click)="nextImage()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors cursor-pointer">
+                  <i class="ri-arrow-right-line"></i>
+                </button>
+              </ng-container>
+            </div>
+            <div class="grid grid-cols-4 gap-2">
+              <button *ngFor="let image of article.gallery; let i = index" (click)="setCurrentImage(i)" class="overflow-hidden rounded cursor-pointer" [ngClass]="{'ring-2 ring-blue-500': currentImageIndex === i}">
+                <img [src]="image" [alt]="'Miniature ' + (i + 1)" class="w-full h-16 object-cover object-top hover:scale-110 transition-transform">
+              </button>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="mt-8 pt-8 border-t border-gray-200">
+            <h4 class="font-bold text-gray-900 mb-4">Mots-clés</h4>
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let tag of article.tags" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                #{{ tag }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Author Info -->
+          <div class="mt-8 pt-8 border-t border-gray-200 bg-gray-50 rounded-lg p-6">
+            <div class="flex items-center">
+              <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                <i class="ri-user-line text-white text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900">{{ article.author }}</h4>
+                <p class="text-gray-600">Service Communication - Mairie de Dangbo</p>
+                <p class="text-sm text-gray-500 mt-1">Publié le {{ article.date }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-1">
+        <div class="sticky top-8 space-y-8">
+          <!-- Share -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Partager</h3>
+            <div class="flex space-x-3">
+              <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                <i class="ri-facebook-line"></i>
+              </button>
+              <button class="w-10 h-10 bg-blue-400 hover:bg-blue-500 text-white rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                <i class="ri-twitter-line"></i>
+              </button>
+              <button class="w-10 h-10 bg-red-600 hover:bg-red-700 text-white rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                <i class="ri-mail-line"></i>
+              </button>
+              <button class="w-10 h-10 bg-green-600 hover:bg-green-700 text-white rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                <i class="ri-whatsapp-line"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Related Articles -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Articles similaires</h3>
+            <div class="space-y-4">
+              <article *ngFor="let related of relatedArticles" class="group cursor-pointer">
+                <img [src]="related.image" [alt]="related.title" class="w-full h-32 object-cover object-top rounded-lg mb-3 group-hover:scale-105 transition-transform">
+                <div class="space-y-2">
+                  <span class="inline-block px-2 py-1 rounded-full text-xs font-medium" [ngClass]="getCategoryColor(related.category!)">
+                    {{ related.category }}
+                  </span>
+                  <h4 class="font-medium text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                    {{ related.title }}
+                  </h4>
+                  <p class="text-sm text-gray-500">{{ related.date }}</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
