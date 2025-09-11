@@ -1,0 +1,12 @@
+
+User-agent: *
+Allow: /
+Allow: /actualites
+Allow: /decouvrir-dangbo
+Allow: /municipalite
+Allow: /services
+Allow: /documentation
+Allow: /projets
+Allow: /contact
+
+Sitemap: https://example.com/sitemap.xml
