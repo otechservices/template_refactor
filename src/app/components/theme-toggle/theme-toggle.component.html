@@ -1,0 +1,7 @@
+<button (click)="themeService.toggleTheme()" class="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer transition-colors">
+  @if (themeService.theme() === 'dark') {
+    <i class="ri-sun-line text-xl"></i>
+  } @else {
+    <i class="ri-moon-line text-xl"></i>
+  }
+</button>
