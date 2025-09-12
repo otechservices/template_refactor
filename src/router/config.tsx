@@ -1,12 +1,18 @@
 
 import { RouteObject } from 'react-router-dom';
 import Home from '../pages/home/page';
-import Actualites from '../pages/actualites/page';
-import DecouvrirDangbo from '../pages/decouvrir-dangbo/page';
-import Municipalite from '../pages/municipalite/page';
-import Services from '../pages/services/page';
-import Documentation from '../pages/documentation/page';
-import Projets from '../pages/projets/page';
+import Dashboard from '../pages/dashboard/page';
+import ProjectGenerator from '../pages/project-generator/page';
+import PmpSimulator from '../pages/pmp-simulator/page';
+import PmpHistory from '../pages/pmp-history/page';
+import PmpTraining from '../pages/pmp-training/page';
+import PmpTest from '../pages/pmp-test/page';
+import PmpResult from '../pages/pmp-result/page';
+import Login from '../pages/login/page';
+import Register from '../pages/register/page';
+import Missions from '../pages/missions/page';
+import Formations from '../pages/formations/page';
+import Expertise from '../pages/expertise/page';
 import Contact from '../pages/contact/page';
 import NotFound from '../pages/NotFound';
 
@@ -16,28 +22,52 @@ const routes: RouteObject[] = [
     element: <Home />,
   },
   {
-    path: '/actualites',
-    element: <Actualites />,
+    path: '/dashboard',
+    element: <Dashboard />,
   },
   {
-    path: '/decouvrir-dangbo',
-    element: <DecouvrirDangbo />,
+    path: '/project-generator',
+    element: <ProjectGenerator />,
   },
   {
-    path: '/municipalite',
-    element: <Municipalite />,
+    path: '/pmp-simulator',
+    element: <PmpSimulator />,
   },
   {
-    path: '/services',
-    element: <Services />,
+    path: '/pmp-history',
+    element: <PmpHistory />,
   },
   {
-    path: '/documentation',
-    element: <Documentation />,
+    path: '/pmp-training',
+    element: <PmpTraining />,
   },
   {
-    path: '/projets',
-    element: <Projets />,
+    path: '/pmp-test',
+    element: <PmpTest />,
+  },
+  {
+    path: '/pmp-result',
+    element: <PmpResult />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
+  },
+  {
+    path: '/missions',
+    element: <Missions />,
+  },
+  {
+    path: '/formations',
+    element: <Formations />,
+  },
+  {
+    path: '/expertise',
+    element: <Expertise />,
   },
   {
     path: '/contact',

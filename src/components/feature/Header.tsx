@@ -1,83 +1,119 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ThemeToggle } from '../base/ThemeToggle';
 
-export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+interface HeaderProps {
+  currentPage?: string;
+}
 
-  const navItems = [
-    { name: 'Accueil', href: '/' },
-    { name: 'Actualités', href: '/actualites' },
-    { name: 'Découvrir Dangbo', href: '/decouvrir-dangbo' },
-    { name: 'Municipalité', href: '/municipalite' },
-    { name: 'Services', href: '/services' },
-    { name: 'Documentation', href: '/documentation' },
-    { name: 'Projets', href: '/projets' },
-    { name: 'Contact', href: '/contact' }
+export function Header({ currentPage = '' }: HeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const menuItems = [
+    { path: '/', label: 'Accueil' },
+    { path: '/missions', label: 'Nos missions' },
+    { path: '/formations', label: 'Formations' },
+    { path: '/project-generator', label: 'Auto-génération de projets' },
+    { path: '/expertise', label: 'Notre expertise' },
+    { path: '/contact', label: 'Contact' }
   ];
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo Section */}
-          <div className="flex items-center space-x-4">
-            <img 
-              src="https://mairiedangbo.exploitsweb.com/assets/logo.png" 
-              alt="Logo Mairie Dangbo" 
-              className="h-14 w-14 object-contain"
-            />
-            <div className="flex flex-col">
-              <h1 className="text-2xl font-bold text-blue-900" style={{fontFamily: "Pacifico, serif"}}>
-                Mairie
-              </h1>
-              <span className="text-lg font-semibold text-blue-700 uppercase tracking-wide">
-                Dangbo
-              </span>
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 whitespace-nowrap cursor-pointer"
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Button */}
+    <nav className="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 px-4 py-3 transition-colors">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <img 
+            src="https://static.readdy.ai/image/2ce43ce334b232046883f79f4f3df46a/b61b027bf4d42918b4ae2ae5a241e2c2.jfif" 
+            alt="SICA CONSEIL" 
+            className="h-10 w-auto cursor-pointer"
+            onClick={() => navigate('/')}
+          />
+        </div>
+        
+        <div className="hidden md:flex items-center space-x-8">
+          {menuItems.map((item) => (
+            <button
+              key={item.path}
+              onClick={() => navigate(item.path)}
+              className={`cursor-pointer transition-colors ${
+                currentPage === item.path
+                  ? 'text-orange-500 font-medium'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400'
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
+          <ThemeToggle />
           <button
-            className="lg:hidden flex flex-col space-y-1 p-2 cursor-pointer"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => navigate('/login')}
+            className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer transition-colors"
           >
-            <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+            Connexion
+          </button>
+          <button 
+            onClick={() => navigate('/dashboard')}
+            className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 cursor-pointer whitespace-nowrap transition-colors"
+          >
+            Accès gratuit
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-200 py-4">
-            <nav className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-700 hover:text-blue-600 font-medium px-4 py-2 transition-colors duration-200 cursor-pointer"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </nav>
-          </div>
-        )}
+        <button 
+          className="md:hidden cursor-pointer"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <i className="ri-menu-line text-2xl text-gray-600 dark:text-gray-300"></i>
+        </button>
       </div>
-    </header>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden mt-4 pb-4 border-t border-gray-100 dark:border-gray-800">
+          <div className="flex flex-col space-y-3 pt-4">
+            {menuItems.map((item) => (
+              <button
+                key={item.path}
+                onClick={() => {
+                  navigate(item.path);
+                  setIsMenuOpen(false);
+                }}
+                className={`cursor-pointer text-left transition-colors ${
+                  currentPage === item.path
+                    ? 'text-orange-500 font-medium'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+            <div className="flex items-center justify-between">
+              <span className="text-gray-600 dark:text-gray-300">Mode sombre</span>
+              <ThemeToggle />
+            </div>
+            <button
+              onClick={() => {
+                navigate('/login');
+                setIsMenuOpen(false);
+              }}
+              className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer text-left transition-colors"
+            >
+              Connexion
+            </button>
+            <button 
+              onClick={() => {
+                navigate('/dashboard');
+                setIsMenuOpen(false);
+              }}
+              className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 cursor-pointer whitespace-nowrap w-fit transition-colors"
+            >
+              Accès gratuit
+            </button>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }
