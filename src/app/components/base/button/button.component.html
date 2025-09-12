@@ -1,0 +1,10 @@
+<button
+  [type]="type"
+  (click)="onButtonClick()"
+  [disabled]="disabled"
+  [class]="buttonClasses"
+>
+  <i *ngIf="icon && iconPosition === 'left'" [class]="icon + ' mr-2'"></i>
+  <ng-content></ng-content>
+  <i *ngIf="icon && iconPosition === 'right'" [class]="icon + ' ml-2'"></i>
+</button>
