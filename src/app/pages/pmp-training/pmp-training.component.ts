@@ -164,4 +164,13 @@ export class PmpTrainingComponent {
   navigate(path: string) {
     this.navigationService.navigate(path);
   }
+
+  goBackToModuleFromLesson() {
+    if (this.lessonModal) {
+      const domainId = this.lessonModal.domainId;
+      const moduleIndex = this.lessonModal.moduleIndex;
+      this.closeLessonModal();
+      this.openModuleModal(domainId, moduleIndex);
+    }
+  }
 }
