@@ -249,7 +249,7 @@
           </div>
           <div class="flex flex-col sm:flex-row gap-4">
             <button (click)="closeModuleModal(); navigate('/pmp-test?domain=' + currentModuleDomain.id)" class="flex-1 bg-orange-500 text-white py-3 px-6 rounded-lg hover:bg-orange-600 cursor-pointer whitespace-nowrap"><i class="ri-question-line mr-2"></i>Passer au test après formation</button>
-            <button (click)="closeModuleModal(); setStudyModal(currentModuleDomain.id)" class="flex-1 border border-gray-300 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-50 cursor-pointer whitespace-nowrap"><i class="ri-arrow-left-line mr-2"></i>Retour aux modules</button>
+            <button (click)="closeModuleModal(); openStudyModal(currentModuleDomain.id)" class="flex-1 border border-gray-300 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-50 cursor-pointer whitespace-nowrap"><i class="ri-arrow-left-line mr-2"></i>Retour aux modules</button>
           </div>
         </div>
       </div>

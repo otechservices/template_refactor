@@ -132,6 +132,10 @@ export class PmpTestComponent implements OnInit, OnDestroy {
     return this.questions.filter(q => this.selectedAnswers[q.id] === q.correctAnswer).length;
   }
 
+  get answeredQuestionsCount(): number {
+    return Object.keys(this.selectedAnswers).length;
+  }
+
   navigate(path: string): void {
     this.navigationService.navigate(path);
   }

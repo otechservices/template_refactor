@@ -64,4 +64,59 @@ export class SeoService {
     };
     this.setJsonLd(schema);
   }
+
+  generateBreadcrumbSchema(items: { name: string, url: string }[]) {
+    const itemListElement = items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": `https://www.sica-conseil.com${item.url}` // Replace with actual base URL
+    }));
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": itemListElement
+    };
+    this.setJsonLd(schema);
+  }
+
+  generateCourseSchema(name: string, description: string, price: string, duration: string) {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": name,
+      "description": description,
+      "provider": {
+        "@type": "Organization",
+        "name": "SICA CONSEIL"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": price,
+        "priceCurrency": "EUR"
+      },
+      "timeRequired": duration
+    };
+    this.setJsonLd(schema);
+  }
+
+  generateServiceSchema(name: string, description: string, price: string) {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": name,
+      "description": description,
+      "provider": {
+        "@type": "Organization",
+        "name": "SICA CONSEIL"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": price,
+        "priceCurrency": "EUR"
+      }
+    };
+    this.setJsonLd(schema);
+  }
 }

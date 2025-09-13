@@ -172,7 +172,7 @@
           </div>
           <div class="flex justify-between items-center">
             <button (click)="handlePreviousQuestion()" [disabled]="currentQuestion === 0" class="px-6 py-2 rounded cursor-pointer whitespace-nowrap" [ngClass]="currentQuestion === 0 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"><i class="ri-arrow-left-line mr-2"></i>Précédent</button>
-            <div class="text-sm text-gray-600">{{ Object.keys(selectedAnswers).length }} / {{ questions.length }} réponses</div>
+            <div class="text-sm text-gray-600">{{ answeredQuestionsCount }} / {{ questions.length }} réponses</div>
             <button (click)="handleNextQuestion()" [disabled]="currentQuestion === questions.length - 1" class="px-6 py-2 rounded cursor-pointer whitespace-nowrap" [ngClass]="currentQuestion === questions.length - 1 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-orange-500 text-white hover:bg-orange-600'"><i class="ri-arrow-right-line ml-2"></i>Suivant</button>
           </div>
         </div>
