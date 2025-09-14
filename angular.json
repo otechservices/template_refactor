@@ -55,7 +55,7 @@
       "fileReplacements": [
         {
           "replace": "src/environments/environment.ts",
-          "with": "src/environments/environment.development.ts"
+          "with": "src/environments/environment.dev.ts"
         }
       ]
             }
@@ -100,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "6df53107-9540-46e2-9596-0595c7b685bb"
   }
 }
