@@ -1,0 +1,42 @@
+
+User-agent: *
+
+# Allow public pages
+Allow: /
+Allow: /actualites
+Allow: /actualites/*
+Allow: /contact
+Allow: /cape-autorises
+Allow: /garderies-autorisees
+Allow: /inscription-cape
+Allow: /inscription-garderie
+Allow: /deliberations-cape
+Allow: /deliberations-garderie
+Allow: /session-results
+Allow: /faq
+Allow: /assistance-en-ligne
+Allow: /candidature-professionnel
+Allow: /information
+
+# Disallow private/user areas
+Disallow: /auth/
+Disallow: /dashboard
+Disallow: /dashboard/*
+
+# Disallow technical files
+Disallow: /src/
+Disallow: /*.json$
+Disallow: /*.ts$
+Disallow: /*.tsx$
+
+# Allow static assets
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+
+Sitemap: https://example.com/sitemap.xml
