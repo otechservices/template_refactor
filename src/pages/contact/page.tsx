@@ -135,7 +135,7 @@ export default function ContactPage() {
       <section 
         className="relative min-h-screen flex items-center justify-center bg-cover bg-center py-16"
         style={{
-          backgroundImage: 'url(https://readdy.ai/api/search-image?query=Professional%20African%20woman%20smiling%20while%20waving%20hello%20on%20laptop%20screen%2C%20warm%20welcoming%20atmosphere%2C%20modern%20office%20environment%20with%20soft%20lighting%2C%20customer%20service%20and%20communication%20theme%2C%20friendly%20and%20approachable%20feeling&width=1920&height=1080&seq=contact-bg&orientation=landscape)'
+          backgroundImage: 'url(https://readdy.ai/api/search-image?query=Friendly%20African%20female%20government%20social%20worker%20or%20CAPE%20administrator%20smiling%20warmly%20at%20camera%20in%20bright%20modern%20office%2C%20professional%20attire%2C%20child%20protection%20posters%20and%20CAPE%20certification%20documents%20visible%20on%20walls%2C%20welcoming%20customer%20service%20environment%2C%20natural%20lighting%20creating%20approachable%20atmosphere%20for%20contact%20and%20communication&width=1920&height=1080&seq=contact-cape-bg&orientation=landscape)'
         }}
       >
         <div className="absolute inset-0 bg-black/40"></div>

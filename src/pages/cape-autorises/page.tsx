@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../home/components/Header';
 
 export default function CapeAutorisesPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,7 +18,7 @@ export default function CapeAutorisesPage() {
     { id: 7, name: 'Orphelinat les Saints Innocents de Lobogo' },
     { id: 8, name: 'Orphelinat AL HOUDA' },
     { id: 9, name: 'Orphelinat AS SALAM' },
-    { id: 10, name: 'Centre d\'accueil des orphelins et enfants vulnérables OHANA' },
+    { id: 10, name: "Centre d'accueil des orphelins et enfants vulnérables OHANA" },
     { id: 11, name: 'Centre d\'Accueil La Providence' },
     { id: 12, name: 'Orphelinat Sainte Marie de Cotonou' },
     { id: 13, name: 'Centre d\'Accueil des Enfants Défavorisés' },
@@ -114,54 +115,8 @@ export default function CapeAutorisesPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white shadow-sm fixed w-full top-0 z-50">
-        <div className="w-full px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-8">
-              <div className="flex items-center space-x-3">
-                <img 
-                  src="https://cape.social.gouv.bj/assets/template2/images/logo-masm.png" 
-                  alt="LOGO MASM" 
-                  className="h-12 object-contain"
-                />
-              </div>
-            </div>
-            
-            <nav className="flex items-center space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-blue-600 cursor-pointer">ACCUEIL</Link>
-              
-              <div className="relative group">
-                <span className="text-gray-700 hover:text-blue-600 cursor-pointer flex items-center">
-                  E-SERVICES
-                  <i className="ri-arrow-down-s-line ml-1"></i>
-                </span>
-              </div>
-
-              <div className="relative group">
-                <span className="text-gray-700 hover:text-blue-600 cursor-pointer flex items-center">
-                  DÉLIBÉRATIONS
-                  <i className="ri-arrow-down-s-line ml-1"></i>
-                </span>
-              </div>
-
-              <div className="relative group">
-                <span className="text-blue-600 font-medium cursor-pointer flex items-center">
-                  STRUCTURES AUTORISÉES
-                  <i className="ri-arrow-down-s-line ml-1"></i>
-                </span>
-              </div>
-
-              <div className="relative group">
-                <span className="text-gray-700 hover:text-blue-600 cursor-pointer flex items-center">
-                  SUPPORT
-                  <i className="ri-arrow-down-s-line ml-1"></i>
-                </span>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </header>
+      {/* Header uniforme */}
+      <Header />
 
       {/* Hero Section */}
       <section 
@@ -214,7 +169,7 @@ export default function CapeAutorisesPage() {
                     setSearchTerm(e.target.value);
                     setCurrentPage(1);
                   }}
-                  className="border border-gray-300 rounded px-3 py-1 text-sm w-48"
+                  className="border border-gray-300rounded px-3 py-1 text-sm w-48"
                   placeholder="Rechercher..."
                 />
               </div>

@@ -11,8 +11,7 @@ export default function RegisterPage() {
     email: '',
     telephone: '',
     password: '',
-    confirmPassword: '',
-    typeCompte: 'particulier'
+    confirmPassword: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -57,8 +56,7 @@ export default function RegisterPage() {
           prenom: formData.prenom,
           email: formData.email,
           telephone: formData.telephone,
-          password: formData.password,
-          typeCompte: formData.typeCompte
+          password: formData.password
         })
       });
 
@@ -84,7 +82,7 @@ export default function RegisterPage() {
       <div 
         className="min-h-screen flex items-center justify-center py-20 bg-cover bg-center"
         style={{
-          backgroundImage: 'url(https://readdy.ai/api/search-image?query=Professional%20African%20woman%20smiling%20while%20holding%20documents%20in%20bright%20modern%20government%20office%2C%20registration%20and%20signup%20process%2C%20welcoming%20atmosphere%2C%20clean%20workspace%20with%20natural%20lighting%2C%20government%20building%20exterior%20visible&width=1920&height=1080&seq=register-bg&orientation=landscape)'
+          backgroundImage: 'url(https://readdy.ai/api/search-image?query=Happy%20African%20children%20playing%20and%20laughing%20together%20in%20a%20bright%20modern%20daycare%20center%20or%20CAPE%20facility%2C%20colorful%20educational%20toys%20and%20activities%20visible%2C%20warm%20welcoming%20atmosphere%2C%20professional%20childcare%20environment%20with%20safety%20equipment%2C%20natural%20lighting%20through%20large%20windows%20creating%20cheerful%20mood&width=1920&height=1080&seq=register-cape-bg&orientation=landscape)'
         }}
       >
         <div className="absolute inset-0 bg-white/80"></div>
@@ -164,24 +162,6 @@ export default function RegisterPage() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
                   placeholder="+229 XX XX XX XX"
                 />
-              </div>
-
-              <div>
-                <label htmlFor="typeCompte" className="block text-sm font-medium text-gray-700 mb-2">
-                  Type de compte*
-                </label>
-                <select
-                  id="typeCompte"
-                  name="typeCompte"
-                  value={formData.typeCompte}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm pr-8"
-                >
-                  <option value="particulier">Particulier</option>
-                  <option value="professionnel">Professionnel</option>
-                  <option value="structure">Structure/Organisation</option>
-                </select>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

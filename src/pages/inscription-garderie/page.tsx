@@ -1,35 +1,16 @@
 
 import { Link } from 'react-router-dom';
+import Header from '../home/components/Header';
+import Footer from '../home/components/Footer';
 
 export default function InscriptionGarderiePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="w-full px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <img 
-                src="https://cape.social.gouv.bj/assets/template2/images/logo-masm.png" 
-                alt="LOGO MASM" 
-                className="h-12 object-contain"
-              />
-            </div>
-            
-            <nav className="flex items-center space-x-8">
-              <Link to="/" className="text-blue-600 font-medium hover:text-blue-700 cursor-pointer">ACCUEIL</Link>
-              <a href="#" className="text-gray-700 hover:text-blue-600 cursor-pointer">E-SERVICES</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 cursor-pointer">DÉLIBÉRATIONS</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 cursor-pointer">STRUCTURES AUTORISÉES</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 cursor-pointer">SUPPORT</a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section 
-        className="relative min-h-[400px] flex items-center justify-center bg-cover bg-center"
+        className="relative min-h-[400px] flex items-center justify-center bg-cover bg-center pt-20"
         style={{
           backgroundImage: 'url(https://readdy.ai/api/search-image?query=Happy%20African%20children%20playing%20and%20learning%20in%20bright%20modern%20daycare%20nursery%20environment%20with%20colorful%20toys%20and%20educational%20materials%2C%20safe%20and%20nurturing%20childcare%20setting%20with%20natural%20lighting%20and%20professional%20supervision&width=1920&height=600&seq=garderie-inscription-hero&orientation=landscape)'
         }}
@@ -236,34 +217,7 @@ export default function InscriptionGarderiePage() {
         </section>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 px-6 mt-12">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="flex items-center justify-center mb-6">
-            <img 
-              src="https://cape.social.gouv.bj/assets/template2/images/logo-masm-footer.png" 
-              alt="Logo MASM Footer" 
-              className="h-16 object-contain"
-            />
-          </div>
-          
-          <p className="text-gray-400 text-sm mb-4">
-            © Ministère des Affaires Sociales et de la Microfinance - 2022
-          </p>
-          
-          <div className="flex justify-center mb-4">
-            <div className="flex h-2 w-16">
-              <div className="flex-1 bg-green-500"></div>
-              <div className="flex-1 bg-yellow-400"></div>
-              <div className="flex-1 bg-red-500"></div>
-            </div>
-          </div>
-          
-          <a href="https://readdy.ai/?origin=logo" className="text-gray-400 hover:text-white text-sm cursor-pointer">
-            Made with Readdy
-          </a>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

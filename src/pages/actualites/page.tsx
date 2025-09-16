@@ -120,6 +120,31 @@ export default function ActualitesPage() {
     ? newsItems 
     : newsItems.filter(item => item.category === selectedCategory);
 
+  // Helper function to convert French date format to ISO
+  const convertFrenchDateToISO = (frenchDate: string) => {
+    try {
+      // Convert "15 Décembre 2024" to "2024-12-15"
+      const months: { [key: string]: string } = {
+        'Janvier': '01', 'Février': '02', 'Mars': '03', 'Avril': '04',
+        'Mai': '05', 'Juin': '06', 'Juillet': '07', 'Août': '08',
+        'Septembre': '09', 'Octobre': '10', 'Novembre': '11', 'Décembre': '12'
+      };
+      
+      const parts = frenchDate.split(' ');
+      if (parts.length === 3) {
+        const day = parts[0].padStart(2, '0');
+        const month = months[parts[1]] || '01';
+        const year = parts[2];
+        return new Date(`${year}-${month}-${day}`).toISOString();
+      }
+      
+      // Fallback to current date if parsing fails
+      return new Date().toISOString();
+    } catch {
+      return new Date().toISOString();
+    }
+  };
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -139,7 +164,7 @@ export default function ActualitesPage() {
             "@type": "Organization",
             "name": item.author
           },
-          "datePublished": new Date(item.date.split(' ').reverse().join('-')).toISOString(),
+          "datePublished": convertFrenchDateToISO(item.date),
           "url": `${siteUrl}/actualites/${item.id}`,
           "image": item.image
         }

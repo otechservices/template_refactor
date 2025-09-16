@@ -68,7 +68,7 @@ export default function LoginPage() {
       <div 
         className="min-h-screen flex items-center justify-center py-20 bg-cover bg-center"
         style={{
-          backgroundImage: 'url(https://readdy.ai/api/search-image?query=Professional%20African%20business%20person%20working%20on%20laptop%20in%20modern%20bright%20office%20environment%2C%20government%20building%20in%20background%2C%20clean%20minimalist%20workspace%2C%20warm%20natural%20lighting%2C%20welcoming%20atmosphere%20for%20user%20authentication%20and%20login&width=1920&height=1080&seq=login-bg&orientation=landscape)'
+          backgroundImage: 'url(https://readdy.ai/api/search-image?query=Professional%20African%20educator%20or%20childcare%20worker%20sitting%20at%20clean%20modern%20desk%20with%20laptop%20computer%2C%20welcoming%20smile%2C%20bright%20CAPE%20center%20or%20daycare%20facility%20in%20background%2C%20organized%20workspace%20with%20child%20safety%20certificates%20and%20educational%20materials%20visible%2C%20warm%20professional%20atmosphere%20for%20user%20login%20and%20authentication&width=1920&height=1080&seq=login-cape-bg&orientation=landscape)'
         }}
       >
         <div className="absolute inset-0 bg-white/80"></div>
@@ -141,7 +141,9 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center space-x-2 whitespace-nowrap"
+                className="w-full bg-blue-600 hover:bg-blue-7
+
+70 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center space-x-2 whitespace-nowrap"
               >
                 {isSubmitting ? (
                   <>
